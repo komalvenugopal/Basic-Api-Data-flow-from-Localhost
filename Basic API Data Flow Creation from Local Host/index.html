@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fetch API with PHP</title>
+	<script>
+		// FETCH DATA
+		fetch('server.php').then((res) => res.json())
+		.then(response => {
+			console.log(response);
+			let output = '';
+			for(let i in response){
+				output += `<tr>
+						<td>${response[i].food_id}</td>
+						<td>${response[i].foodname}</td>
+						<td>${response[i].cost}</td>
+						<td>${response[i].cuisines}</td>
+				</tr>`;
+			}
+
+			document.getElementById('table').innerHTML = output;
+		}).catch(error => console.log(error));
+
+	</script>
+</head>
+
+<body>
+	<div class="container">
+		<table>
+			<thead>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Quantities</th>
+			</thead>	
+
+			<tbody id="table">
+			</tbody>		
+		</table>
+		
+	</div>
+	
+</body>
+</html>
